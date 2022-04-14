@@ -20,8 +20,13 @@ public class MenuController : MonoBehaviour
     [Header("Available Instruction sets")]
     public string _newInstructionSet;
     private string instructionToLoad;
-
+    private string selectedInstruction;
     [SerializeField] private GameObject noInstructionsDialog = null;
+
+    public void setActive(string element)
+    {
+        selectedInstruction = element;
+    }
 
     public void NewInstructionDialogYes()
     {
