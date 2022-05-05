@@ -36,4 +36,17 @@ public class InstructionManager : MonoBehaviour
         mousePos.z = 0;
         return mousePos;
     }
+    public int getID(string name)
+    {
+        int i = 0,result = 0;
+        string[] exercises = { "Flex", "Extend", "RollInPronation", "RollOutSupination", "RadialDev", "UlnarDev" };
+        foreach(string s in exercises)
+        {
+            if (s==name)
+            {
+                result = i;
+            }
+        }
+        return result;
+    }
 }

@@ -5,20 +5,19 @@ using UnityEngine;
 [System.Serializable]
 public class Item
 {
-
     public string name;
-    public List<string> InstructionList;
+    public List<Instruction> InstructionList;
 
     public Item()
     {
         this.name = "";
-        this.InstructionList = new List<string>();
+        this.InstructionList = new List<Instruction>();
     }
-    public void setInstructionList(List<string> text)
+    public void setInstructionList(List<Instruction> itemList)
     {
-        InstructionList = text;
+        InstructionList = itemList;
     }
-    public List<string> getInstructionList()
+    public List<Instruction> getInstructionList()
     {
         return InstructionList;
     }

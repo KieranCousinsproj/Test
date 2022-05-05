@@ -12,11 +12,11 @@ public class GameData
     {
         InstructionList = new Item();
     }
-    public void setInstructionList(List<string> item)
+    public void setInstructionList(List<Instruction> item)
     {
         InstructionList.setInstructionList(item);
     }
-    public List<string> getInstructionList()
+    public List<Instruction> getInstructionList()
     {
         return InstructionList.getInstructionList();
     }

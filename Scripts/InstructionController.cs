@@ -9,7 +9,7 @@ public class InstructionController : MonoBehaviour
 {
     public int ID;
     public bool clicked = false;
-    private InstructionManager manager;
+    public InstructionManager manager;
 
     void start()
     {
@@ -18,13 +18,23 @@ public class InstructionController : MonoBehaviour
 
     public void buttonClicked()
     {
-        Debug.Log("button pressed");
+        Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 worldPosition = GetMousePos();
         clicked = true;
         Instantiate(manager.ItemImage[ID], new Vector3(worldPosition.x, worldPosition.y, 0), Quaternion.identity);
         manager.currentButtonPressed = ID;
     }
-   
+
+    Vector3 GetMousePos()
+    {
+        Debug.Log(Input.mousePosition);
+        Vector3 screenPosDepth = Input.mousePosition;
+        // Give it a depth. Maybe a raycast depth, maybe a clipping plane...
+        screenPosDepth.z = 697.78f;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(screenPosDepth);
+        mousePos.z = 0;
+        return mousePos;
+    }
     /*private string getInstructionList()
     {
         string val  = string.Join(", ", TextList.ToArray());
@@ -35,24 +45,10 @@ public class InstructionController : MonoBehaviour
     {
         TextList = GameData.current.getInstructionList();
     }*/
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("OfflineScene");
-
-    }
+    
     // Update is called once per frame
     void Update()
     {
        
-    }
-    Vector3 GetMousePos()
-    {
-        Debug.Log(Input.mousePosition);
-        Vector3 screenPosDepth = Input.mousePosition;
-        // Give it a depth. Maybe a raycast depth, maybe a clipping plane...
-        screenPosDepth.z = 697.78f;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(screenPosDepth);
-        mousePos.z = 0;
-        return mousePos;
     }
 }
